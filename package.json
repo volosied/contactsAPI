@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/DaBusyB/contactsAPI/issues"
   },
-  "homepage": "https://github.com/DaBusyB/contactsAPI#readme"
+  "homepage": "https://github.com/DaBusyB/contactsAPI#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }

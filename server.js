@@ -1,11 +1,19 @@
 const express = require('express')
-const server = express()
+const helmet = require('helmet')
+const morgan = require('morgan')
 
-//Routes
-const workRouter = require('./workContacts/workContactsRouter.js')
+const workRoute = require('./workContacts/workRouter.js')
+
+const app = express()
+
+app.use(express.json())
 
 //Middleware
-server.use(express.json())
-server.use('/api/workContacts', workRouter)
+app.use(express.json())
+app.use(helmet())
+app.use(morgan('dev'))
 
-module.exports = server
+//Routes
+app.use('/api/work-contacts', workRoute)
+
+module.exports = app

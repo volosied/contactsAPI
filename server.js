@@ -2,7 +2,7 @@ const express = require('express')
 const helmet = require('helmet')
 const morgan = require('morgan')
 
-const workRoute = require('./workContacts/workRouter.js')
+const workRoute = require('./contacts/contactsRouter.js')
 
 const app = express()
 

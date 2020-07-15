@@ -1,11 +1,10 @@
 {
-  "name": "contactsAPI",
+  "name": "contacts-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -20,9 +19,7 @@
   "homepage": "https://github.com/DaBusyB/contactsAPI#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "helmet": "^3.23.3",
     "knex": "^0.21.2",
-    "morgan": "^1.10.0",
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {

@@ -1,17 +1,16 @@
-const express = require("express");
-const knex = require("../data/db-config.js");
+const express = require('express');
+const knex = require('../data/db-config.js');
 
 const router = express.Router();
 
-router.get("/", async (req, res, next) => {
-    //console.log(db.select().from("contacts"))
+router.get('/', async (req, res) => {
     try {
-        const contacts = await knex("contacts")
+        const contacts = await knex('contactsAPI')
         res.json(contacts)
     } catch(err) {
-        res.status(500).json({message: "contacts not found", error:err})
+        res.status(500).json({message: 'contacts not found'})
     }
 });
 
 
-module.exports = router
+module.exports = router;

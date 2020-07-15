@@ -3,7 +3,7 @@ const knex = require("../data/db-config.js");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", async (req, res, next) => {
     //console.log(db.select().from("contacts"))
     try {
         const contacts = await knex("contacts")

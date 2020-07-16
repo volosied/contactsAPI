@@ -23,24 +23,34 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-// router.put('/:id', async (req, res) => {
-//     const {id} = req.params
+router.put('/:id', async (req, res) => {
+    const {id} = req.params
+    const newInfo = req.body
 
-//     try {
+    try {
+        const change = await knex('contacts').update(newInfo).where({id})
+        if(change) {
+            res.json({updated: change})
+        } else {
+            res.status(404).json({message: 'there was a problem updating this contact'})
+        }
+    } catch(err) {
+        res.status(500).json({message:'there was a problem updating this contact', error:err})
+    }
+})
 
-//     } catch(err) {
+
+
+router.post('/', async (req, res) => {
+    const newContact = req.body
+
+    try {
+        const contact = await knex('contacts').insert(newContact)
+        res.status(201).json(contact)
+    } catch(err) {
         
-//     }
-// })
-
-// router.post('/', async (req, res) => {
-    
-//     try {
-
-//     } catch(err) {
-        
-//     }
-// })
+    }
+})
 
 // router.delete('/:id', async (req, res) => {
 //     const {id} = req.params

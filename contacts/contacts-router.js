@@ -29,6 +29,7 @@ router.put('/:id', async (req, res) => {
 
     try {
         const change = await knex('contacts').update(newInfo).where({id})
+
         if(change) {
             res.json({updated: change})
         } else {
@@ -39,8 +40,6 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-
-
 router.post('/', async (req, res) => {
     const newContact = req.body
 
@@ -48,19 +47,24 @@ router.post('/', async (req, res) => {
         const contact = await knex('contacts').insert(newContact)
         res.status(201).json(contact)
     } catch(err) {
-        
+        res.status(500).json({message: 'there was a problem adding a new contact', error:err})
     }
 })
 
-// router.delete('/:id', async (req, res) => {
-//     const {id} = req.params
+router.delete('/:id', async (req, res) => {
+    const {id} = req.params
 
-//     try {
+    try {
+        const deletedContact = await knex('contacts').delete().where({id})
 
-//     } catch(err) {
-        
-//     }
-// })
-
+        if(deletedContact) {
+            res.json({deleted: deletedContact})
+        } else {
+            res.status(404).json({message: 'id may be invalid, please check id'})
+        }
+    } catch(err) {
+        res.status(500).json({message: 'there was a problem deleting this contact', error:err})
+    }
+})
 
 module.exports = router;

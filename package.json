@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --exit",
     "start": "nodemon index.js"
   },
   "repository": {
@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/DaBusyB/contactsAPI#readme",
   "dependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "express": "^4.17.1",
     "knex": "^0.21.2",
     "sqlite3": "^5.0.0"
